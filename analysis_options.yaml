@@ -1,0 +1,28 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "lib/src/localization/gen/**"
+    - "build/**"
+  language:
+    strict-casts: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    # Documentação de API pública não é obrigatória em código de app.
+    public_member_api_docs: false
+    # Permite TODOs durante a implementação faseada.
+    flutter_style_todos: false
+    # Imports relativos dentro de lib/ (convenção adotada no plano/domínio).
+    always_use_package_imports: false
+    prefer_relative_imports: true
+    # Limite de 80 colunas é estilístico; fórmulas/docs ficam mais legíveis sem.
+    lines_longer_than_80_chars: false
+    # pubspec é agrupado por papel (estado, rede, persistência...) com comentários.
+    sort_pub_dependencies: false
+    # Value objects usam construtor const + campos final (imutáveis de fato);
+    # evita acoplar o domínio ao Flutter só para anotar @immutable.
+    avoid_equals_and_hash_code_on_mutable_classes: false
